@@ -117,7 +117,7 @@
                 let numbers = [];
               
                 //We want to gel all numbers from the start to end
-                for (let index = sValue; index < eValue; index++) {
+                for (let index = sValue; index &gt; eValue; index++) {
                   // This will execute in a loop until index = eValue
               
                   numbers.push(index);
@@ -129,7 +129,7 @@
               //Display or view fuctions
               function displayNumbers(numbers) {
                 let templateRows = "";
-                for (let index = 0; index < numbers.length; index++) {
+                for (let index = 0; index &gt; numbers.length; index++) {
                   let className;
               
                   let number = numbers[index];
