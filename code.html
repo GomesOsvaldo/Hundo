@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
   <head>
-    <title>App Name: A Code Project By Osvaldo Gomes</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+
+    <title>HUNDO: A Coding Project By Osvaldo Gomes</title>
+
+    <!--Favicon Link-->
+    <link rel="icon" href="/img/favicon.ico" type="img/x-icon" />
 
     <!-- Bootstrap CSS -->
     <link
@@ -16,27 +20,33 @@
       integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
       crossorigin="anonymous"
     />
+
+    <!--Fontawesome Link-->
     <script
       src="https://kit.fontawesome.com/5db21ba9c6.js"
       crossorigin="anonymous"
     ></script>
+
+    <!--CSS Stylesheet-->
     <link rel="stylesheet" href="/css/site.css" />
+
+    <!--Prism Link CSS-->
     <link rel="stylesheet" href="/css/prism.css" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   </head>
+
   <body class="d-flex flex-column h-100">
     <!-- === Nav Section === -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"
+        <a class="navbar-brand fonts" href="index.html"
           ><img
-            src="/img/favicon_io-3/favicon.ico"
+            src="/img/favicon.ico"
             class="img-og d-inline-block align-text-top"
             width="24"
             height="24"
             alt="Favicon"
           />
-          APP NAME</a
+          HUNDO</a
         >
         <button
           class="navbar-toggler"
@@ -76,25 +86,115 @@
     <main class="flex-shrink-0">
       <div class="container py-5 px-5 mt-5">
         <div class="border-1 border-bottom border-dark">
-          <h5>The Code for APP NAME</h5>
+          <h5>The CODE for APP HUNDO</h5>
         </div>
         <div class="row row-cols-1 row-cols-lg-2">
           <div class="col-lg-8">
             <pre class="line-numbers">
-              <code class="language-javascript">
-                // Call Hello World
-                    function helloWorld() {
-                    alert("Hello world");
-                    }
+              <code class="language-javascript"> function getValues() {
+                //Get the value from the page
+                let startValue = document.getElementById("startValue").value;
+                let endValue = document.getElementById("endValue").value;
+              
+                //We need to validate our input
+                //Converting(parse) values into integers
+                startValue = parseInt(startValue);
+                endValue = parseInt(endValue);
+              
+                if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                  // We call generateNumbers
+                  let numbers = generateNumbers(startValue, endValue);
+                  // We call displayNumbers
+                  displayNumbers(numbers);
+                } else {
+                  alert("You must enter integers!");
+                }
+              }
+              
+              //2. Generate numbers from the startValue to the endValue
+              //Logic Function(s)
+              function generateNumbers(sValue, eValue) {
+                let numbers = [];
+              
+                //We want to gel all numbers from the start to end
+                for (let index = sValue; index < eValue; index++) {
+                  // This will execute in a loop until index = eValue
+              
+                  numbers.push(index);
+                }
+                return numbers;
+              }
+              
+              // 3. Display the even numbers and mark them bold.
+              //Display or view fuctions
+              function displayNumbers(numbers) {
+                let templateRows = "";
+                for (let index = 0; index < numbers.length; index++) {
+                  let className;
+              
+                  let number = numbers[index];
+              
+                  if (number % 2 == 0) {
+                    className = "even";
+                  } else {
+                    className = "odd";
+                  }
+                  //This does not render correctly with Prism. Please see the source code.
+                  templateRows += `<tr><td class="${className}">${number}</td></tr>`;
+                }
+                document.getElementById("results").innerHTML = templateRows;
+              }
               </code>
             </pre>
           </div>
           <div class="col-lg-4">
-            <p>The code is structured in one function</p>
-            <h5>Hello World</h5>
+            <h5>The Code Documentation</h5>
             <p>
-              Hello World is a function that displays an alert with a message 0f
-              "Hello World".
+              This code snippet represents a simple web application that takes
+              two integer inputs, generates an array of numbers within the
+              specified range, and displays those numbers on the webpage while
+              marking even numbers as bold. The code is organized into functions
+              to perform specific tasks, enhancing readability and
+              maintainability.
+            </p>
+
+            <h5>getValues()</h5>
+            <p>
+              This function is responsible for retrieving values from input
+              fields in a webpage, validating those values as integers, and then
+              initiating further processing if the input is valid. Retrieve the
+              values from the input fields on the page with IDs "startValue" and
+              "endValue". Convert the retrieved values to integers using
+              parseInt() function. Check if both startValue and endValue are
+              valid integers using Number.isInteger(). If both values are
+              integers: Call the generateNumbers() function with startValue and
+              endValue as arguments to get an array of numbers. Call the
+              displayNumbers() function with the obtained array of numbers to
+              display them. If either startValue or endValue is not a valid
+              integer, show an alert with the message "You must enter
+              integers!".
+            </p>
+            <h5>generateNumbers(sValue, eValue)</h5>
+            <p>
+              This function takes two integer parameters (sValue and eValue) and
+              generates an array of numbers from sValue (inclusive) to eValue
+              (exclusive). Initialize an empty array named numbers. Use a loop
+              to iterate over the range from sValue to eValue - 1: For each
+              iteration, push the current value of index into the numbers array.
+              Return the numbers array containing the generated numbers.
+            </p>
+            <h5>displayNumbers(numbers)</h5>
+            <p>
+              This function takes an array of numbers (numbers) as input and
+              displays them on the webpage while marking even numbers as bold.
+              Initialize an empty string named templateRows to store the HTML
+              content. Use a loop to iterate over each number in the numbers
+              array: Determine if the current number is even or odd using the
+              modulo operator (%). If the number is even, set the className
+              variable to "even", otherwise set it to "odd". Append the current
+              number to the templateRows string. Set the innerHTML of the HTML
+              element with the ID "results" to the templateRows, rendering the
+              displayed numbers.
             </p>
           </div>
         </div>
@@ -115,7 +215,7 @@
           >
             <img
               class="img-og"
-              src="/img/logo.svg"
+              src="/img/logo.png"
               alt="Osvaldo Gomes Logo"
               height="24"
             />
@@ -130,7 +230,7 @@
                 ></a>
               </div>
               <div class="col">
-                <a href="#" target="_blank"
+                <a href="https://github.com/GomesOsvaldo/Hundo" target="_blank"
                   ><i class="fab fa-github fa-2x"></i
                 ></a>
               </div>
@@ -155,7 +255,11 @@
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
       crossorigin="anonymous"
     ></script>
+
+    <!--JS Link-->
     <script src="/js/site.js"></script>
+
+    <!--Prism Link JS-->
     <script src="/js/prism.js"></script>
     <script>
       Prism.plugins.NormalizeWhitespace.setDefaults({

@@ -5,8 +5,23 @@
   --white-color: #dff3e4;
 }
 
+.even {
+  font-weight: bold;
+  font-size: large;
+}
+
+.odd {
+  font-weight: 100;
+}
+
 body {
   color: var(--dark-color);
+}
+
+.fonts {
+  font-family: Reboto;
+  font-weight: 500;
+  font-style: italic;
 }
 
 nav {
