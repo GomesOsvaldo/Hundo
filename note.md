@@ -33,7 +33,7 @@ NOTE: RESPONSIVINESS:
 
 NOTE: FAVICON:
 
-1. FAVICON.COM --> UPLOAD PNG --> GO DOWNLOAD ON YOUR COMPUTER --> PATH TO IMAGE FOLDER AND GO TO FAVICON.COM AND COPY THE LINK AND IT TO BRAND NAVBAR BETWEEN ANCHOR TAG --> WIDTH-30 AND HEIGHT-24 AN D-INLINE-BLOCK ALIGN-ITEMS-CENTER
+1. FAVICON.COM --> GO TO FAVICON.COM --> IMPORT IMG PNG --> GRAB AND DROP IMG --> TAKE IMG FROM DOWNLOAD TO THE IMG FILE --> BRAND NAVBAR BETWEEN ANCHOR TAG --> WIDTH-30 AND HEIGHT-24 AN D-INLINE-BLOCK ALIGN-ITEMS-CENTER
 
 Note: Javascript:
 
@@ -50,6 +50,71 @@ let endValue = document.getElementById("endValue").value;
       .getElementById("buttonSubmit")
       .addEventListener("onClick", getValue);
   </script>
+
+JS:
+
+1. GET THE VALUE FROM UI:
+   FUNCTION getValue() {
+   Get the value from the UI
+   a) let startValue = document.getElementById("startValue").value
+   b) let endValue = document.getElementById("endValue").value
+
+We need to validate our input
+Parse into integers
+startValue = parseInt(startValue)
+endValue = parseInt(endValue)
+
+if(Number.isInteger(startVlue) && Number.isInteger(endValue)) {
+We call let numbers = generateNumber(startValue, endValue)
+
+    We call displayNumbers(numbers)
+
+} else {
+alert("You must enter numbers")
+}
+
+}
+
+2. Generate values fro Start Value to the End Value
+   Logic Function
+
+function generateNumbers(sValue, eValue) {
+
+let numbers = [];
+
+We want to get all valuee from the start to the end
+for(let index = sValue; index < eValue; index++) {
+this will execute in a loop until index = evalue
+numbers.push(index)
+}
+return numbers --- the generateNumbers will be called in getValue function
+}
+
+3. Display numbers and mark them Bold
+   Display or View fucntion
+
+funtion display(numbers) {
+
+let className;
+
+let templateRows = ""
+
+for(let index = 0; index < length.numbers; index++) {
+
+    let number = numbers[index];
+
+    if(number % 2 == 0) {
+
+      className = "even";
+    } else {
+      className = "odd";
+    }
+    templateRows += `<tr class="${className}"><td>${number}</td><tr>`
+
+}
+document.getElementById("results").innerHTML = templateRows;
+
+}
 
 Note: Configuring debuger: click debuger --> choose the debuger(chrome) --> click launcher at the top --> choose chrome --> configure it by adding the chrome url:
 {
